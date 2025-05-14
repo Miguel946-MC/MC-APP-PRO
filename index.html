@@ -1,135 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>MC App</title>
-  <style>
-    /* Paleta de cores dourado e preto */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #1a1a1a;
-      color: #fff;
-    }
-    header {
-      background-color: #d4af37; /* Dourado */
-      text-align: center;
-      padding: 20px;
-      font-size: 2em;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-    }
-    button {
-      background-color: #d4af37;
-      border: none;
-      color: black;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 1em;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    button:hover {
-      background-color: #b38b2b;
-    }
-    .section {
-      margin-bottom: 30px;
-    }
-    .section h2 {
-      color: #d4af37;
-    }
-    .dropdown, .task-list {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      background-color: #333;
-      color: #fff;
-      border: 1px solid #444;
-    }
-    .task-list li {
-      background-color: #444;
-      margin: 5px 0;
-      padding: 10px;
-      list-style-type: none;
-    }
-    .task-list li:hover {
-      background-color: #555;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MC App Pro - Aplicativo inovador com design moderno e funcionalidades incríveis. Conheça nossos produtos e ideias.">
+    <meta name="author" content="Miguel">
+    <title>MC App Pro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ddd;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+        header {
+            background-color: #1f1f1f;
+            color: #d4af37;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        section {
+            padding: 40px 0;
+        }
+        .produtos-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .produto {
+            background-color: #333;
+            border-radius: 10px;
+            width: 30%;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .produto:hover {
+            transform: scale(1.05);
+        }
+        .produto img {
+            width: 100%;
+            height: auto;
+        }
+        .produto h3 {
+            color: #d4af37;
+            padding: 10px;
+            text-align: center;
+        }
+        .produto p {
+            padding: 0 10px;
+            text-align: center;
+            color: #ccc;
+        }
+        .produto a {
+            display: block;
+            background-color: #d4af37;
+            color: #121212;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 0 0 10px 10px;
+        }
+        footer {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 20px;
+            color: #d4af37;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #ddd;
+        }
+        .light-mode {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .toggle-theme {
+            cursor: pointer;
+            background-color: #d4af37;
+            padding: 10px 20px;
+            border: none;
+            color: #121212;
+            font-size: 1em;
+            margin: 20px;
+        }
+        .toggle-theme:hover {
+            background-color: #c89f29;
+        }
+        .about-section {
+            text-align: center;
+            background-color: #333;
+            padding: 40px 0;
+            color: #d4af37;
+        }
+        .about-section h2 {
+            font-size: 2em;
+        }
+        .about-section p {
+            color: #ccc;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    MC App
-  </header>
+<header>
+    <h1>MC App Pro</h1>
+    <button class="toggle-theme" onclick="toggleTheme()">Alternar Tema</button>
+</header>
 
-  <div class="container">
-    <!-- Conversor de Unidades -->
-    <div class="section">
-      <h2>Conversor de Unidades</h2>
-      <label for="unitFrom">De:</label>
-      <select id="unitFrom" class="dropdown">
-        <option value="km">Kilômetro</option>
-        <option value="m">Metro</option>
-        <option value="cm">Centímetro</option>
-      </select>
-      
-      <label for="unitTo">Para:</label>
-      <select id="unitTo" class="dropdown">
-        <option value="km">Kilômetro</option>
-        <option value="m">Metro</option>
-        <option value="cm">Centímetro</option>
-      </select>
-
-      <button onclick="convertUnits()">Converter</button>
-      <p id="conversionResult"></p>
+<!-- Seção de Produtos -->
+<section id="produtos">
+    <div class="container">
+        <h2 style="color: #d4af37; text-align: center;">Produtos MC</h2>
+        <div class="produtos-grid">
+            <!-- Produto 1 -->
+            <div class="produto">
+                <img src="imagem-do-produto1.jpg" alt="Produto 1">
+                <h3>MC Vision</h3>
+                <p>O celular mais inovador da MC, com uma tela de última geração e design elegante.</p>
+                <a href="#">Saiba Mais</a>
+            </div>
+            <!-- Produto 2 -->
+            <div class="produto">
+                <img src="imagem-do-produto2.jpg" alt="Produto 2">
+                <h3>MC Ultra</h3>
+                <p>Desempenho extremo e bateria duradoura. Ideal para quem precisa de potência no dia a dia.</p>
+                <a href="#">Saiba Mais</a>
+            </div>
+            <!-- Produto 3 -->
+            <div class="produto">
+                <img src="imagem-do-produto3.jpg" alt="Produto 3">
+                <h3>MC Pro X</h3>
+                <p>Para quem busca performance e design de ponta, o MC Pro X é o celular que atende a todas as necessidades.</p>
+                <a href="#">Saiba Mais</a>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Lista de Tarefas -->
-    <div class="section">
-      <h2>Lista de Tarefas</h2>
-      <input type="text" id="taskInput" placeholder="Adicione uma tarefa" class="dropdown">
-      <button onclick="addTask()">Adicionar Tarefa</button>
-      <ul id="taskList" class="task-list"></ul>
-    </div>
+<!-- Seção Sobre -->
+<section class="about-section">
+    <h2>Sobre o MC App Pro</h2>
+    <p>O MC App Pro é uma plataforma inovadora criada para destacar os produtos da MC e suas ideias revolucionárias. Estamos sempre buscando novas formas de conectar tecnologia e design, para oferecer aos nossos usuários as melhores experiências.</p>
+</section>
 
-    <!-- Sobre -->
-    <div class="section">
-      <h2>Sobre</h2>
-      <p>MC App foi criado por Miguel, com foco em simplicidade, eficiência e design moderno.</p>
-    </div>
-  </div>
+<footer>
+    <p>&copy; 2025 MC App Pro. Todos os direitos reservados.</p>
+</footer>
 
-  <script>
-    // Função de Conversão de Unidades
-    function convertUnits() {
-      const unitFrom = document.getElementById('unitFrom').value;
-      const unitTo = document.getElementById('unitTo').value;
-      const result = `Convertendo de ${unitFrom} para ${unitTo}.`;  // Lógica de conversão pode ser inserida aqui
-      document.getElementById('conversionResult').innerText = result;
+<script>
+    // Função para alternar entre tema escuro e claro
+    function toggleTheme() {
+        var body = document.body;
+        body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode');
     }
+</script>
 
-    // Função de Lista de Tarefas
-    function addTask() {
-      const taskInput = document.getElementById('taskInput').value;
-      if (taskInput.trim() !== "") {
-        const taskList = document.getElementById('taskList');
-        const newTask = document.createElement('li');
-        newTask.textContent = taskInput;
-        taskList.appendChild(newTask);
-        document.getElementById('taskInput').value = ""; // Limpar o input
-      }
-    }
-  </script>
-  
 </body>
 </html>
