@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MC App</title>
+  <style>
+    /* Paleta de cores dourado e preto */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+    header {
+      background-color: #d4af37; /* Dourado */
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    button {
+      background-color: #d4af37;
+      border: none;
+      color: black;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #b38b2b;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .section h2 {
+      color: #d4af37;
+    }
+    .dropdown, .task-list {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #444;
+    }
+    .task-list li {
+      background-color: #444;
+      margin: 5px 0;
+      padding: 10px;
+      list-style-type: none;
+    }
+    .task-list li:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    MC App
+  </header>
+
+  <div class="container">
+    <!-- Conversor de Unidades -->
+    <div class="section">
+      <h2>Conversor de Unidades</h2>
+      <label for="unitFrom">De:</label>
+      <select id="unitFrom" class="dropdown">
+        <option value="km">Kilômetro</option>
+        <option value="m">Metro</option>
+        <option value="cm">Centímetro</option>
+      </select>
+      
+      <label for="unitTo">Para:</label>
+      <select id="unitTo" class="dropdown">
+        <option value="km">Kilômetro</option>
+        <option value="m">Metro</option>
+        <option value="cm">Centímetro</option>
+      </select>
+
+      <button onclick="convertUnits()">Converter</button>
+      <p id="conversionResult"></p>
+    </div>
+
+    <!-- Lista de Tarefas -->
+    <div class="section">
+      <h2>Lista de Tarefas</h2>
+      <input type="text" id="taskInput" placeholder="Adicione uma tarefa" class="dropdown">
+      <button onclick="addTask()">Adicionar Tarefa</button>
+      <ul id="taskList" class="task-list"></ul>
+    </div>
+
+    <!-- Sobre -->
+    <div class="section">
+      <h2>Sobre</h2>
+      <p>MC App foi criado por Miguel, com foco em simplicidade, eficiência e design moderno.</p>
+    </div>
+  </div>
+
+  <script>
+    // Função de Conversão de Unidades
+    function convertUnits() {
+      const unitFrom = document.getElementById('unitFrom').value;
+      const unitTo = document.getElementById('unitTo').value;
+      const result = `Convertendo de ${unitFrom} para ${unitTo}.`;  // Lógica de conversão pode ser inserida aqui
+      document.getElementById('conversionResult').innerText = result;
+    }
+
+    // Função de Lista de Tarefas
+    function addTask() {
+      const taskInput = document.getElementById('taskInput').value;
+      if (taskInput.trim() !== "") {
+        const taskList = document.getElementById('taskList');
+        const newTask = document.createElement('li');
+        newTask.textContent = taskInput;
+        taskList.appendChild(newTask);
+        document.getElementById('taskInput').value = ""; // Limpar o input
+      }
+    }
+  </script>
+  
+</body>
+</html>
